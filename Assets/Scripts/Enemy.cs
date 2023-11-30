@@ -54,16 +54,6 @@ public class Enemy : MonoBehaviour
             rb.position = new Vector2(rb.position.x - 34.8f, rb.position.y);
         }
 
-        if (rb.position.x > 16f && rb.position.x < 18f) 
-        {
-            rb.position = new Vector2(movement * speed, upForce);
-        }
-
-        if (rb.position.x > -16f && rb.position.x < -14f)
-        {
-            rb.position = new Vector2(movement * speed, upForce);
-        }
-
     }
 
 
@@ -71,7 +61,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Kill Floor"))
         {
-            Destroy(gameObject);
+            rb.position = new Vector2(rb.position.x, 7);
         }
 
     }
