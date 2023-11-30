@@ -10,6 +10,7 @@ TagManager:
   - Right border
   - Point score
   - Game Over
+  - Kill Floor
   layers:
   - Default
   - TransparentFX

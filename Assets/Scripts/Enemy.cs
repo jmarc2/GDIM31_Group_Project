@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
             rb.velocity = new Vector2(movement * speed, upForce);
             newTime = Time.time + Random.Range(0, 4);
         }
+        
 
         //Allows the enemy to go outside the view of the camera to show up on the other side of the map.
         if (rb.position.x < -17.4f)
@@ -50,6 +51,26 @@ public class Enemy : MonoBehaviour
         if (rb.position.x > 17.4f)
         {
             rb.position = new Vector2(rb.position.x - 34.8f, rb.position.y);
+        }
+
+        if (rb.position.x > 16f && rb.position.x < 18f) 
+        {
+            rb.velocity = new Vector2(0, upForce);
+        }
+
+        if (rb.position.x > -16f && rb.position.x < -14f)
+        {
+            rb.velocity = new Vector2(0, upForce);
+        }
+
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Kill Floor"))
+        {
+            Destroy(gameObject);
         }
 
     }

@@ -18,10 +18,9 @@ public class EnemyKill : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var enemy = GameObject.FindWithTag("Enemy");
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(enemy);
+            Destroy(gameObject.GetComponentInParent<Enemy>().gameObject);
         }
     }
 
