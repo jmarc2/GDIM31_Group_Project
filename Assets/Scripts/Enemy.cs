@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -55,12 +56,12 @@ public class Enemy : MonoBehaviour
 
         if (rb.position.x > 16f && rb.position.x < 18f) 
         {
-            rb.velocity = new Vector2(0, upForce);
+            rb.position = new Vector2(movement * speed, upForce);
         }
 
         if (rb.position.x > -16f && rb.position.x < -14f)
         {
-            rb.velocity = new Vector2(0, upForce);
+            rb.position = new Vector2(movement * speed, upForce);
         }
 
     }
