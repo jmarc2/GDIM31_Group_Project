@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Platforms : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
-        //comment
+        
     }
 
     // Update is called once per frame
@@ -15,4 +16,5 @@ public class Platforms : MonoBehaviour
     {
         
     }
+
 }
