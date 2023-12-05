@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyKill : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class EnemyKill : MonoBehaviour
         {
             Destroy(gameObject.GetComponentInParent<Enemy>().gameObject);
         }
+
     }
 
 }
