@@ -776,6 +776,7 @@ MonoBehaviour:
   fuel: 0
   rb: {fileID: 0}
   move: 1
+  jumpBoost: 100
 --- !u!1 &797258383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2060,7 +2061,7 @@ GameObject:
   - component: {fileID: 1454157003}
   m_Layer: 0
   m_Name: Middle Left Platform
-  m_TagString: Platform
+  m_TagString: Jump Boost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

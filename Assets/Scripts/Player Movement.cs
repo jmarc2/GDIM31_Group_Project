@@ -53,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         //ya mama
     }
 
+    public float jumpBoost = 100f;
+
     //deletes the player object if contact between the player and bottom side of an enemy is met
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -60,6 +62,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        //add jump boost to middle left platform (?)
+        if (collision.gameObject.CompareTag("Jump Boost"))
+        {
+            rb.AddForce(transform.up * jumpBoost, ForceMode2D.Impulse);
+        }
+
     }
 
 }
