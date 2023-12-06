@@ -16,7 +16,11 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+            rb = GetComponent<Rigidbody2D>();
+            float[] spawnx = { -12, 13, -9, 11 };
+            float[] spawny = { 4, 4, 1, 1 };
+            int spawn = Random.Range(0, 3);
+            rb.position = new Vector2(spawnx[spawn], spawny[spawn]);
     }
 
     // Update is called once per frame
@@ -44,14 +48,14 @@ public class Enemy : MonoBehaviour
         
 
         //Allows the enemy to go outside the view of the camera to show up on the other side of the map.
-        if (rb.position.x < -17.4f)
+        if (rb.position.x < -18.4f)
         {
-            rb.position = new Vector2(rb.position.x + 34.8f, rb.position.y);
+            rb.position = new Vector2(rb.position.x + 35.8f, rb.position.y);
         }
 
-        if (rb.position.x > 17.4f)
+        if (rb.position.x > 18.4f)
         {
-            rb.position = new Vector2(rb.position.x - 34.8f, rb.position.y);
+            rb.position = new Vector2(rb.position.x - 35.8f, rb.position.y);
         }
 
     }
