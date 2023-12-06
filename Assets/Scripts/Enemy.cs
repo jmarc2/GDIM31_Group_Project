@@ -17,8 +17,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
             rb = GetComponent<Rigidbody2D>();
-            float[] spawnx = { -12, 13, 2, -9, 10};
-            float[] spawny = { 4, 4, 1, -3, -3};
+            float[] spawnx = { -12, 13, -9, 11, 1};
+            float[] spawny = { 4, 4, 1, 1, 2};
             int spawn = Random.Range(0, 4);
             rb.position = new Vector2(spawnx[spawn], spawny[spawn]);
     }
