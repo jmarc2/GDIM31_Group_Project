@@ -779,11 +779,6 @@ MonoBehaviour:
   grav: 5
   jumpstr: 3
   upForce: 5
-<<<<<<< Updated upstream
-  fuel: 0
-  rb: {fileID: 0}
-  move: 1
-=======
   rb: {fileID: 644807357}
   scoreDisplay: {fileID: 1065802323}
   jumpBoost: 100
@@ -889,7 +884,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
->>>>>>> Stashed changes
 --- !u!1 &797258383
 GameObject:
   m_ObjectHideFlags: 0

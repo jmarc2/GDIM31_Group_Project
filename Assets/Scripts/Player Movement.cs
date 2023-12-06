@@ -2,11 +2,10 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-<<<<<<< Updated upstream
     [SerializeField]
     public float moveSpeed;
     [SerializeField]
@@ -17,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private float move;
-=======
     [SerializeField] public float xspd;
     [SerializeField] public float yspd;
     [SerializeField] public float mxspd = 8;
@@ -25,12 +23,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float decel = 2;
     [SerializeField] public float grav = 5;
     [SerializeField] public float jumpstr = 10;
-    [SerializeField] public float upForce;
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Text scoreDisplay;
 
     private int score;
->>>>>>> Stashed changes
 
     void Start()
     {
@@ -83,8 +78,6 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector2(transform.position.x - 34.8f, transform.position.y);
         }
     }
-
-<<<<<<< Updated upstream
     //deletes the player object if contact between the player and bottom side of an enemy is met
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -92,16 +85,5 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
-=======
-
-
-
-
-    public float jumpBoost = 100f;
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Your existing OnTriggerEnter2D logic...
->>>>>>> Stashed changes
     }
 }
