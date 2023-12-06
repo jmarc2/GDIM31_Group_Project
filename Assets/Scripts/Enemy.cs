@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,11 +8,10 @@ public class Enemy : MonoBehaviour
     public float movement;
     public float speed;
     public float upForce;
-    protected Rigidbody2D rb;
-    protected float newTime;
+    private Rigidbody2D rb;
+    private float newTime;
     public float right;
     public float left;
-
 
     // Start is called before the first frame update
     void Start()
@@ -60,14 +58,8 @@ public class Enemy : MonoBehaviour
             rb.position = new Vector2(rb.position.x - 35.8f, rb.position.y);
         }
 
-        AfterUpdate();
-
     }
 
-    public virtual void AfterUpdate() 
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
