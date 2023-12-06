@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
 
         else 
         {
-            
+            GameStateManager.GameOver();
         }
     }
 }

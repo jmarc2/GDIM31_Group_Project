@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Menu : MonoBehaviour
     public void Awake()
     {
         GameStateManager.OnGameOver += Open;
+
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,7 +27,7 @@ public class Menu : MonoBehaviour
     public void Restart()
     {
         gameObject.SetActive(false);
-        GameStateManager.Restart();
+        SceneManager.LoadScene(0);
     }
 
     public static void Quit()
