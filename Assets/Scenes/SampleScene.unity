@@ -905,13 +905,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfcd7cdf2b38c6a4aba7e1c4dcf49936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  upForce: 5
-  fuel: 0
   rb: {fileID: 644807357}
-  move: 0
+  xspd: 0
+  yspd: 0
+  mxspd: 5
+  accel: 0.2
+  decel: 0.08
+  jumpstr: 3
   scoreDisplay: {fileID: 1065802323}
-  jumpBoost: 100
 --- !u!1 &665660315
 GameObject:
   m_ObjectHideFlags: 0

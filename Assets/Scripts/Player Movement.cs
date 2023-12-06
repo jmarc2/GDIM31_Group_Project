@@ -7,21 +7,13 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    public float moveSpeed;
-    [SerializeField]
-    public float upForce;
-    [SerializeField]
-    public float fuel;
-    [SerializeField]
     private Rigidbody2D rb;
-    [SerializeField]
-    private float move;
+    
     [SerializeField] public float xspd;
     [SerializeField] public float yspd;
     [SerializeField] public float mxspd = 8;
     [SerializeField] public float accel = 5;
     [SerializeField] public float decel = 2;
-    [SerializeField] public float grav = 5;
     [SerializeField] public float jumpstr = 10;
     [SerializeField] private Text scoreDisplay;
 
