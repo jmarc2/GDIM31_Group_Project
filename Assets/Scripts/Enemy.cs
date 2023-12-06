@@ -23,7 +23,12 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        float[] spawnx = {-12, 13, -9, 11};
+        float[] spawny = {4, 4, 1, 1};
+        int spawn = Random.Range(0, 3);
+
         rb = GetComponent<Rigidbody2D>();
+        rb.position = new Vector2(spawnx[spawn], spawny[spawn]);
     }
 
     // Update is called once per frame
@@ -71,16 +76,6 @@ public class Enemy : MonoBehaviour
             rb.position = new Vector2(rb.position.x, 7);
         }
 
-    }
-
-    public static void SpawnE(GameObject Enemy)
-    {
-        Instantiate(rb);
-        float[] spawnx = { -12, 13, -9, 11 };
-        float[] spawny = { 4, 4, 1, 1 };
-        int spawn = Random.Range(0, 3);
-
-        rb.position = new Vector2(spawnx[spawn], spawny[spawn]);
     }
 
 }

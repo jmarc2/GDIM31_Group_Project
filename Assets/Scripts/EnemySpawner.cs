@@ -34,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (Time.time > nextSpawn)
             {
+                //Spawn(enemyObjs[Random.Range(0, enemyObjs.Count)]);
                 Instantiate(enemyObjs[Random.Range(0, enemyObjs.Count)]);
                 nextSpawn = Time.time + Random.Range(minSpawn, maxSpawn);
             }
