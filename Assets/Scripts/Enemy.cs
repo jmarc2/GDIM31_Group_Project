@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,18 +8,17 @@ public class Enemy : MonoBehaviour
     public float movement;
     public float speed;
     public float upForce;
-    protected Rigidbody2D rb;
-    protected float newTime;
+    private Rigidbody2D rb;
+    private float newTime;
     public float right;
     public float left;
-
 
     // Start is called before the first frame update
     void Start()
     {
             rb = GetComponent<Rigidbody2D>();
-            float[] spawnx = { -12, 13, 2, -9, 10};
-            float[] spawny = { 4, 4, 1, -3, -3};
+            float[] spawnx = { -12, 13, -9, 11, 1};
+            float[] spawny = { 4, 4, 1, 1, 2};
             int spawn = Random.Range(0, 4);
             rb.position = new Vector2(spawnx[spawn], spawny[spawn]);
     }
@@ -60,14 +58,8 @@ public class Enemy : MonoBehaviour
             rb.position = new Vector2(rb.position.x - 35.8f, rb.position.y);
         }
 
-        AfterUpdate();
-
     }
 
-    public virtual void AfterUpdate() 
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

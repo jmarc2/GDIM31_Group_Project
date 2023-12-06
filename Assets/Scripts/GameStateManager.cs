@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.UI;
 
+
 public class GameStateManager : MonoBehaviour
 {
     public static Action OnGameOver;
     private static GameStateManager _instance;
 
+    [SerializeField] Canvas gameEnd;
+  
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         if (_instance == null)
         {
             _instance = this;
@@ -24,6 +27,7 @@ public class GameStateManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     // Update is called once per frame
@@ -36,6 +40,8 @@ public class GameStateManager : MonoBehaviour
     {
         OnGameOver.Invoke();
         Time.timeScale = 0;
+        var gameEnd = new GameStateManager();
+        gameEnd.gameObject.SetActive(true);
 
     }
 

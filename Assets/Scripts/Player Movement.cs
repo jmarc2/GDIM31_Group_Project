@@ -18,14 +18,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Text scoreDisplay;
 
     private int score;
-
-
+    public float flip;
+  
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         score = 0;
         scoreDisplay.text = "Score: " + score;
+        flip = transform.localScale.x;
     }
 
 
@@ -37,10 +38,12 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput > 0)
         {
             rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + accel, -mxspd, mxspd), rb.velocity.y);
+            transform.localScale = new Vector3(flip, transform.localScale.y, transform.localScale.z);
         }
         else if (horizontalInput < 0)
         {
             rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - accel, -mxspd, mxspd), rb.velocity.y);
+            transform.localScale = new Vector3((-1)*flip, transform.localScale.y, transform.localScale.z);
         }
         else
         {
@@ -75,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector2(transform.position.x - 34.8f, transform.position.y);
         }
     }
+
+
     //deletes the player object if contact between the player and bottom side of an enemy is met
     private void OnTriggerEnter2D(Collider2D collision)
     {
