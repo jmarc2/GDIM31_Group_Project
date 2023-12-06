@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,11 +17,18 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private float move;
+    [SerializeField]
+    private Text scoreDisplay;
+
+    private int score;
+   
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        score = 0;
+        scoreDisplay.text = "Score: " + score;
     }
 
     // Update is called once per frame
@@ -53,13 +61,29 @@ public class PlayerMovement : MonoBehaviour
         //ya mama
     }
 
+    public float jumpBoost = 100f;
+
     //deletes the player object if contact between the player and bottom side of an enemy is met
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //add 10 points when player collides with enemy's top side
+        if (collision.gameObject.CompareTag("Point score"))
+        {
+            score += 10;
+            scoreDisplay.text = "Score: " + score;
+        }
+
         if (collision.gameObject.CompareTag("Game Over"))
         {
             Destroy(gameObject);
         }
+
+        //add jump boost to middle left platform (?)
+        if (collision.gameObject.CompareTag("Jump Boost"))
+        {
+            rb.AddForce(transform.up * jumpBoost, ForceMode2D.Impulse);
+        }
+
     }
 
 }
