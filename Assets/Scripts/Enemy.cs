@@ -8,8 +8,8 @@ public class Enemy : MonoBehaviour
     public float movement;
     public float speed;
     public float upForce;
-    private Rigidbody2D rb;
-    private float newTime;
+    protected Rigidbody2D rb;
+    protected float newTime;
     public float right;
     public float left;
 
@@ -60,6 +60,10 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public virtual void AfterUpdate() 
+    {
+    
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

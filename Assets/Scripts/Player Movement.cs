@@ -86,11 +86,14 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Game Over"))
         {
             Destroy(gameObject);
+            GameStateManager.GameOver();
+            scoreDisplay.text = "";
         }
 
         if (collision.gameObject.CompareTag("Kill Floor"))
         {
             Destroy(gameObject);
+            GameStateManager.GameOver();
         }
 
         //add 10 points when player collides with enemy's top side
