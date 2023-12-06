@@ -48,14 +48,14 @@ public class Enemy : MonoBehaviour
         
 
         //Allows the enemy to go outside the view of the camera to show up on the other side of the map.
-        if (rb.position.x < -17.4f)
+        if (rb.position.x < -18.4f)
         {
-            rb.position = new Vector2(rb.position.x + 34.8f, rb.position.y);
+            rb.position = new Vector2(rb.position.x + 35.8f, rb.position.y);
         }
 
-        if (rb.position.x > 17.4f)
+        if (rb.position.x > 18.4f)
         {
-            rb.position = new Vector2(rb.position.x - 34.8f, rb.position.y);
+            rb.position = new Vector2(rb.position.x - 35.8f, rb.position.y);
         }
 
     }
