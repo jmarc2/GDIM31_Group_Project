@@ -955,11 +955,7 @@ MonoBehaviour:
   xspd: 0
   yspd: 0
   mxspd: 5
-<<<<<<< HEAD
   accel: 0.5
-=======
-  accel: 0.2
->>>>>>> parent of 1f63461 (Update SampleScene.unity)
   decel: 0.08
   jumpstr: 3
   scoreDisplay: {fileID: 1065802323}
