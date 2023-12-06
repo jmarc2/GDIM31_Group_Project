@@ -1,15 +1,23 @@
-using UnityEngine.UI;
+using JetBrains.Annotations;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerMovement : MonoBehaviour
 {
+<<<<<<< Updated upstream
     [SerializeField]
     public float moveSpeed;
+    [SerializeField]
+    public float upForce;
+    [SerializeField]
+    public float fuel;
     [SerializeField]
     private Rigidbody2D rb;
     [SerializeField]
     private float move;
-
+=======
     [SerializeField] public float xspd;
     [SerializeField] public float yspd;
     [SerializeField] public float mxspd = 8;
@@ -22,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Text scoreDisplay;
 
     private int score;
+>>>>>>> Stashed changes
 
     void Start()
     {
@@ -32,44 +41,38 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
-   
-            // Player movement left and right
-            if (horizontalInput > 0)
-            {
-                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + accel, -mxspd, mxspd), rb.velocity.y);
-            }
-
-        else if (horizontalInput < 0)
-                {
-                    rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - accel, -mxspd, mxspd), rb.velocity.y);
-                }
-                else
-                {
-                   
-                    // Decelerate when not pressing left or right
-                    if (rb.velocity.x > 0)
-                    {
-                        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - decel, 0, mxspd), rb.velocity.y);
-                    }
-                    else if (rb.velocity.x < 0)
-                    {
-                        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + decel, -mxspd, 0), rb.velocity.y);
-                    }
-                }
-
-
-            // Jumping
-            float verticalInput = Input.GetAxisRaw("Vertical");
-        if (verticalInput > 0)
+        // Player movement left and right
+        if (horizontalInput > 0)
         {
-            
-            rb.AddForce(Vector2.up * (yspd + jumpstr), ForceMode2D.Impulse);
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + accel, -mxspd, mxspd), rb.velocity.y);
+        }
+        else if (horizontalInput < 0)
+        {
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - accel, -mxspd, mxspd), rb.velocity.y);
+        }
+        else
+        {
+            // Decelerate when not pressing left or right
+            if (rb.velocity.x > 0)
+            {
+                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - decel, 0, mxspd), rb.velocity.y);
+            }
+            else if (rb.velocity.x < 0)
+            {
+                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + decel, -mxspd, 0), rb.velocity.y);
+            }
         }
 
+        // Jumping
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        if (verticalInput > 0)
+        {
+            rb.AddForce(Vector2.up * (yspd + jumpstr), ForceMode2D.Impulse);
+        }
+        
 
         // The rest of your code...
 
-  
         // Screen edge teleport
         if (transform.position.x < -17.4f)
         {
@@ -81,16 +84,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
+<<<<<<< Updated upstream
     //deletes the player object if contact between the player and bottom side of an enemy is met
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Game Over"))
         {
             Destroy(gameObject);
         }
-    }
-    
-
+=======
 
 
 
@@ -100,6 +102,6 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         // Your existing OnTriggerEnter2D logic...
+>>>>>>> Stashed changes
     }
-
 }
