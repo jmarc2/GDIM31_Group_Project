@@ -6,6 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerMovement : MonoBehaviour
 {
+<<<<<<< Updated upstream
     [SerializeField]
     public float moveSpeed;
     [SerializeField]
@@ -16,43 +17,74 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private float move;
+=======
+    [SerializeField] public float xspd;
+    [SerializeField] public float yspd;
+    [SerializeField] public float mxspd = 8;
+    [SerializeField] public float accel = 5;
+    [SerializeField] public float decel = 2;
+    [SerializeField] public float grav = 5;
+    [SerializeField] public float jumpstr = 10;
+    [SerializeField] public float upForce;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Text scoreDisplay;
 
-    // Start is called before the first frame update
+    private int score;
+>>>>>>> Stashed changes
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //Allows to take A,D, <-, and -> as inputs for moving left and right
-        move = Input.GetAxisRaw("Horizontal");
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        //Moves the player left and right
-        rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        // Player movement left and right
+        if (horizontalInput > 0)
         {
-            rb.velocity = transform.up * upForce;
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + accel, -mxspd, mxspd), rb.velocity.y);
+        }
+        else if (horizontalInput < 0)
+        {
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - accel, -mxspd, mxspd), rb.velocity.y);
+        }
+        else
+        {
+            // Decelerate when not pressing left or right
+            if (rb.velocity.x > 0)
+            {
+                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - decel, 0, mxspd), rb.velocity.y);
+            }
+            else if (rb.velocity.x < 0)
+            {
+                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + decel, -mxspd, 0), rb.velocity.y);
+            }
         }
 
-        //These two if statements check for when the player moves past the
-        //camera and teleports the player to the other side of the map.
-        if (rb.position.x < -17.4f)
+        // Jumping
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        if (verticalInput > 0)
         {
-            rb.position = new Vector2(rb.position.x + 34.8f, rb.position.y);
+            rb.AddForce(Vector2.up * (yspd + jumpstr), ForceMode2D.Impulse);
         }
+        
 
-        if (rb.position.x > 17.4f)
+        // The rest of your code...
+
+        // Screen edge teleport
+        if (transform.position.x < -17.4f)
         {
-            rb.position = new Vector2(rb.position.x - 34.8f, rb.position.y);
+            transform.position = new Vector2(transform.position.x + 34.8f, transform.position.y);
         }
-
-
-        //ya mama
+        else if (transform.position.x > 17.4f)
+        {
+            transform.position = new Vector2(transform.position.x - 34.8f, transform.position.y);
+        }
     }
 
+<<<<<<< Updated upstream
     //deletes the player object if contact between the player and bottom side of an enemy is met
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -60,6 +92,16 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+=======
 
+
+
+
+    public float jumpBoost = 100f;
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Your existing OnTriggerEnter2D logic...
+>>>>>>> Stashed changes
+    }
 }
