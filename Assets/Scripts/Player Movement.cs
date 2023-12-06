@@ -19,10 +19,15 @@ public class PlayerMovement : MonoBehaviour
 
     private int score;
 
+
+    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        score = 0;
+        scoreDisplay.text = "Score: " + score;
     }
+
 
     void FixedUpdate()
     {
@@ -76,6 +81,18 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Game Over"))
         {
             Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Kill Floor"))
+        {
+            Destroy(gameObject);
+        }
+
+        //add 10 points when player collides with enemy's top side
+        if (collision.gameObject.CompareTag("Point score"))
+        {
+            score += 10;
+            scoreDisplay.text = "Score: " + score;
         }
     }
 }
