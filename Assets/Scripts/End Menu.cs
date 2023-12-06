@@ -3,35 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour
+public class End_Menu : MonoBehaviour
 {
     // Start is called before the first frame update
     public void Awake()
     {
-        GameStateManager.OnGameOver += Open;
+        GameStateManager.OnGameOver += OpenEnd;
 
         gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnDestroy()
     {
-        
+        GameStateManager.OnGameOver -= OpenEnd;
     }
 
-    public void Open()
+    public void OpenEnd()
     {
         gameObject.SetActive(true);
     }
 
-    public void Restart()
+    public void RestartGame()
     {
         gameObject.SetActive(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
-    public static void Quit()
+    public static void QuitEnd()
     {
         Application.Quit();
     }
 }
+

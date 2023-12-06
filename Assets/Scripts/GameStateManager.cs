@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class GameStateManager : MonoBehaviour
 {
     public static Action OnGameOver;
+    public static Action OnGameBegin;
     private static GameStateManager _instance;
 
     [SerializeField] Canvas gameEnd;
@@ -28,6 +29,8 @@ public class GameStateManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        Begin();
+
     }
 
     // Update is called once per frame
@@ -36,13 +39,16 @@ public class GameStateManager : MonoBehaviour
         
     }
 
+    public static void Begin() 
+    {
+        OnGameBegin.Invoke();
+        Time.timeScale = 0;
+    }
+
     public static void GameOver()
     {
         OnGameOver.Invoke();
         Time.timeScale = 0;
-        var gameEnd = new GameStateManager();
-        gameEnd.gameObject.SetActive(true);
-
     }
 
     public static void Restart()
