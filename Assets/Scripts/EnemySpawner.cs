@@ -21,11 +21,18 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyObjs.Count != 0)
+        if ((enemyObjs[0] != null &&
+            enemyObjs[1] != null &&
+            enemyObjs[2] != null &&
+            enemyObjs[3] != null) || 
+            (enemyObjs[3] != null ||
+            enemyObjs[2] != null ||
+            enemyObjs[1] != null ||
+            enemyObjs[0] != null))
         {
             if (Time.time < nextSpawn)
             {
-                Instantiate(enemyObjs[Random.Range(0, 3)]);
+                Instantiate(enemyObjs[Random.Range(0, enemyObjs.Count)]);
                 nextSpawn = Time.time + Random.Range(minSpawn, maxSpawn);
             }
         }

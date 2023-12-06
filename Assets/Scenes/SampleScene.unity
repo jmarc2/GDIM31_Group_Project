@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 62719342}
   - component: {fileID: 62719345}
   - component: {fileID: 62719346}
+  - component: {fileID: 62719348}
+  - component: {fileID: 62719347}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -221,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 62719340}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.58, y: -0.79, z: -0.013871582}
+  m_LocalPosition: {x: -8.580001, y: -0.79, z: -0.013871582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -300,6 +302,96 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.99, y: 0.99}
+  m_EdgeRadius: 0
+--- !u!61 &62719347
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62719340}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.18, y: 0.46}
+  m_EdgeRadius: 0
+--- !u!61 &62719348
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62719340}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.18, y: 0.46}
   m_EdgeRadius: 0
 --- !u!1 &448888335
 GameObject:
@@ -439,7 +531,7 @@ Camera:
   far clip plane: 1000
   field of view: 73
   orthographic: 1
-  orthographic size: 7.458624
+  orthographic size: 9.5851345
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -466,7 +558,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -595,7 +687,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 21.000898, y: 0.484111, z: 0.07769896}
-  m_LocalScale: {x: 1, y: 14.85, z: 1}
+  m_LocalScale: {x: 1, y: 20.86, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1661808503}
@@ -990,7 +1082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0
   speed: 1
-  upForce: 5
+  upForce: 2
   right: 5
   left: -5
 --- !u!212 &797258387
@@ -1179,7 +1271,7 @@ Transform:
   m_GameObject: {fileID: 872732359}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.340898, y: -7.38, z: 0.07769896}
+  m_LocalPosition: {x: 2.340898, y: -9.6, z: 0.07769896}
   m_LocalScale: {x: 37.4, y: 0.67, z: 1.16}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1486,7 +1578,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -15.799102, y: 0.484111, z: 0.07769896}
-  m_LocalScale: {x: 1, y: 14.85, z: 1}
+  m_LocalScale: {x: 1, y: 20.96, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1661808503}
@@ -1552,6 +1644,7 @@ GameObject:
   - component: {fileID: 1113481178}
   - component: {fileID: 1113481177}
   - component: {fileID: 1113481176}
+  - component: {fileID: 1113481180}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -1662,7 +1755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0
   speed: 1
-  upForce: 5
+  upForce: 10
   right: 5
   left: -5
 --- !u!212 &1113481179
@@ -1717,6 +1810,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1113481180
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113481174}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.18, y: 0.46}
+  m_EdgeRadius: 0
 --- !u!1 &1213850687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,6 +1868,7 @@ GameObject:
   - component: {fileID: 1213850691}
   - component: {fileID: 1213850690}
   - component: {fileID: 1213850689}
+  - component: {fileID: 1213850693}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -1839,7 +1978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: 0
-  speed: 1
+  speed: 3
   upForce: 5
   right: 5
   left: -5
@@ -1895,6 +2034,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1213850693
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213850687}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.18, y: 0.46}
+  m_EdgeRadius: 0
 --- !u!1 &1369102297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,7 +2106,7 @@ Transform:
   m_GameObject: {fileID: 1369102297}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.340898, y: 8.38, z: 0.07769896}
+  m_LocalPosition: {x: 2.340898, y: 10.7, z: 0.07769896}
   m_LocalScale: {x: 37.4, y: 0.67, z: 1.16}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2524,8 +2708,8 @@ Transform:
   m_Children:
   - {fileID: 1213850688}
   - {fileID: 1113481175}
-  - {fileID: 62719344}
   - {fileID: 797258388}
+  - {fileID: 62719344}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1608427622
