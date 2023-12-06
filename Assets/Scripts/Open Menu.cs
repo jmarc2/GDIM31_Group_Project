@@ -1,19 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour
+public class Open_Menu : MonoBehaviour
 {
     // Start is called before the first frame update
     public void Awake()
     {
-        GameStateManager.OnGameOver += Open;
+        GameStateManager.OnGameBegin += Open;
+
+        //gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void OnDestroy()
+    {
+        GameStateManager.OnGameBegin -= Open;
     }
 
     public void Open()
@@ -24,7 +32,8 @@ public class Menu : MonoBehaviour
     public void Restart()
     {
         gameObject.SetActive(false);
-        GameStateManager.Restart();
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public static void Quit()
