@@ -13,6 +13,7 @@ public class GameStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SceneManager.LoadScene(sceneBuildIndex:0);
         if (_instance == null)
         {
             _instance = this;
@@ -27,7 +28,7 @@ public class GameStateManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
     }
