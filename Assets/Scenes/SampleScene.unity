@@ -908,8 +908,8 @@ MonoBehaviour:
   rb: {fileID: 644807357}
   xspd: 0
   yspd: 0
-  mxspd: 5
-  accel: 0.2
+  mxspd: 7
+  accel: 0.4
   decel: 0.08
   jumpstr: 3
   scoreDisplay: {fileID: 1065802323}
@@ -3135,8 +3135,8 @@ Transform:
   m_GameObject: {fileID: 1645792696}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.340898, y: -8.2, z: 0.07769896}
-  m_LocalScale: {x: 29.93, y: 0.67, z: 1.16}
+  m_LocalPosition: {x: 2.4936, y: -8.2, z: 0.07769896}
+  m_LocalScale: {x: 36.037727, y: 0.67, z: 1.16}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1661808503}
