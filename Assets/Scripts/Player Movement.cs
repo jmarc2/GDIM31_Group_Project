@@ -1,6 +1,3 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D rb;
-    
+
     [SerializeField] public float xspd;
     [SerializeField] public float yspd;
     [SerializeField] public float mxspd = 8;
@@ -19,15 +16,12 @@ public class PlayerMovement : MonoBehaviour
 
     private int score;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         score = 0;
         scoreDisplay.text = "Score: " + score;
     }
-
 
     void FixedUpdate()
     {
@@ -57,13 +51,14 @@ public class PlayerMovement : MonoBehaviour
 
         // Jumping
         float verticalInput = Input.GetAxisRaw("Vertical");
+
         if (verticalInput > 0)
         {
             rb.AddForce(Vector2.up * (yspd + jumpstr), ForceMode2D.Impulse);
-        }
-        
 
-        // The rest of your code...
+            // Clamp the y component of velocity to control jump height
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -mxspd, mxspd));
+        }
 
         // Screen edge teleport
         if (transform.position.x < -17.4f)
@@ -75,7 +70,8 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector2(transform.position.x - 34.8f, transform.position.y);
         }
     }
-    //deletes the player object if contact between the player and bottom side of an enemy is met
+
+    // deletes the player object if contact between the player and bottom side of an enemy is met
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Game Over"))
@@ -88,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //add 10 points when player collides with enemy's top side
+        // add 10 points when the player collides with the enemy's top side
         if (collision.gameObject.CompareTag("Point score"))
         {
             score += 10;
