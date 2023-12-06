@@ -60,24 +60,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
-<<<<<<< Updated upstream
-=======
-
-        int jb = 0;
-        //add jump boost to middle left platform (?)
-        if (collision.gameObject.CompareTag("Jump Boost"))
-        {
-            jb = 1;
-            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && jb == 1)
-            {
-                rb.velocity = transform.up * jumpBoost;
-            }
-
-
-            //rb.AddForce(transform.up * jumpBoost, ForceMode2D.Impulse);
-        }
-
->>>>>>> Stashed changes
     }
 
 }

@@ -5,19 +5,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
     public float movement;
-    [SerializeField]
     public float speed;
-    [SerializeField]
     public float upForce;
-    [SerializeField]
     private Rigidbody2D rb;
-    [SerializeField]
     private float newTime;
-    [SerializeField]
     public float right;
-    [SerializeField]
     public float left;
 
     // Start is called before the first frame update
@@ -71,16 +64,6 @@ public class Enemy : MonoBehaviour
             rb.position = new Vector2(rb.position.x, 7);
         }
 
-    }
-
-    public static void SpawnE(GameObject Enemy)
-    {
-        Instantiate(rb);
-        float[] spawnx = { -12, 13, -9, 11 };
-        float[] spawny = { 4, 4, 1, 1 };
-        int spawn = Random.Range(0, 3);
-
-        rb.position = new Vector2(spawnx[spawn], spawny[spawn]);
     }
 
 }
