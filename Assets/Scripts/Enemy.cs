@@ -16,7 +16,11 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+            rb = GetComponent<Rigidbody2D>();
+            float[] spawnx = { -12, 13, -9, 11 };
+            float[] spawny = { 4, 4, 1, 1 };
+            int spawn = Random.Range(0, 3);
+            rb.position = new Vector2(spawnx[spawn], spawny[spawn]);
     }
 
     // Update is called once per frame
