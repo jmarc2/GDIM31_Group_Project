@@ -11,6 +11,8 @@ TagManager:
   - Point score
   - Game Over
   - Kill Floor
+  - Jump Boost
+  - Speed Boost
   layers:
   - Default
   - TransparentFX
