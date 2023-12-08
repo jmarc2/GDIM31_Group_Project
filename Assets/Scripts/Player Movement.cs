@@ -5,24 +5,24 @@ using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] public float xspd;
-    [SerializeField] public float yspd;
-    [SerializeField] public float mxspd = 8;
-    [SerializeField] public float accel = 5;
-    [SerializeField] public float decel = 2;
-    [SerializeField] public float jumpstr = 10;
+    [SerializeField] private float xspd;
+    [SerializeField] private float yspd;
+    [SerializeField] private float mxspd = 8;
+    [SerializeField] private float accel = 5;
+    [SerializeField] private float decel = 2;
+    [SerializeField] private float jumpstr = 10;
     [SerializeField] private Text scoreDisplay;
     [SerializeField] TextMeshProUGUI highScoreText;
 
     private int score;
-    public float flip;
+    private float flip;
 
-    private bool isJumping = false;
     private float jumpTimer = 0f;
     public float maxJumpTime = 0.3f;
 
-    private bool isJumpCooldown = false;
-    private float jumpCooldownTimer = 0f;
+    private float JetpackFuel = 50f;
+
+    private bool OnFloor = false;
     public float jumpCooldownDuration = 2.0f;
 
     void CheckHighScore()
@@ -79,38 +79,20 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Jumping
-        if (verticalInput > 0 && !isJumpCooldown)
+        if (verticalInput > 0 && JetpackFuel > 0)
         {
-            if (!isJumping)
-            {
-                isJumping = true;
-                jumpTimer = 0f;
-            }
-
-            // Check if jump duration is within the allowed limit
-            if (jumpTimer < maxJumpTime)
-            {
-                rb.AddForce(Vector2.up * (yspd + jumpstr), ForceMode2D.Impulse);
-                jumpTimer += Time.fixedDeltaTime;
-            }
-        }
-        else
-        {
-            isJumping = false;
-            jumpTimer = 0f;
+            JetpackFuel -= 1;
+            rb.AddForce(Vector2.up * (yspd + jumpstr), ForceMode2D.Impulse);
+            jumpTimer += Time.fixedDeltaTime;
         }
 
         // Cooldown for jump
-        if (isJumpCooldown)
+        if (OnFloor)
         {
-            jumpCooldownTimer += Time.fixedDeltaTime;
-
-            if (jumpCooldownTimer >= jumpCooldownDuration)
-            {
-                isJumpCooldown = false;
-                jumpCooldownTimer = 0f;
-            }
+            if(JetpackFuel < 50)
+                JetpackFuel++;
         }
+        OnFloor = false;
 
 
         // Screen edge teleport
@@ -144,17 +126,20 @@ public class PlayerMovement : MonoBehaviour
             scoreDisplay.text = "Score: " + score;
             CheckHighScore();
         }
+    }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
         // Start jump cooldown when colliding with specific objects
         if (collision.gameObject.CompareTag("Platform"))
         {
-            StartJumpCooldown();
+            SetOnFloor();
         }
     }
 
     // Start jump cooldown
-    private void StartJumpCooldown()
+    private void SetOnFloor()
     {
-        isJumpCooldown = true;
+        OnFloor = true;
     }
 }

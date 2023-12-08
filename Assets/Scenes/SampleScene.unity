@@ -1237,7 +1237,6 @@ MonoBehaviour:
   jumpstr: 3
   scoreDisplay: {fileID: 1065802323}
   highScoreText: {fileID: 1393831602}
-  flip: 0
   maxJumpTime: 0.5
   jumpCooldownDuration: 2
 --- !u!1 &665660315
