@@ -36,7 +36,7 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public static void Begin() 
@@ -53,7 +53,7 @@ public class GameStateManager : MonoBehaviour
 
     public static void Restart()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
 }

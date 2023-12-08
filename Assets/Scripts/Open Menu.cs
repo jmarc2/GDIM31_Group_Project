@@ -32,7 +32,7 @@ public class Open_Menu : MonoBehaviour
     public void Restart()
     {
         gameObject.SetActive(false);
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
 
