@@ -418,6 +418,7 @@ GameObject:
   - component: {fileID: 62719345}
   - component: {fileID: 62719346}
   - component: {fileID: 62719347}
+  - component: {fileID: 62719348}
   m_Layer: 0
   m_Name: Frog 1
   m_TagString: Enemy
@@ -445,6 +446,8 @@ MonoBehaviour:
   minTime: 0
   maxTime: 4
   flip: 0
+  jump: 0
+  animator: {fileID: 62719348}
 --- !u!212 &62719343
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -491,7 +494,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -578,7 +581,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 20.48, y: 20.48}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 20.48, y: 20.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -623,7 +626,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 20.48, y: 20.48}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 20.48, y: 20.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -631,6 +634,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 21.1, y: 8.1}
   m_EdgeRadius: 0
+--- !u!95 &62719348
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62719340}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d28c68a982e8d464ea92502b6e456c6f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &144770545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,7 +2744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &644807355
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3240,18 +3264,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0023670197, y: 0.00004005432}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 20.48, y: 20.48}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99, y: 0.99}
+  m_Size: {x: 20.636192, y: 16.77354}
   m_EdgeRadius: 0
 --- !u!50 &797258385
 Rigidbody2D:
@@ -3321,7 +3345,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0078fd1d43d024aeebc16028d1c42a27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3342,7 +3366,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.63, y: 1.59, z: -0.013871582}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.09, y: 0.09, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1660890663}
@@ -3385,14 +3409,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 20.48, y: 20.48}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.27, y: 0.51}
+  m_Size: {x: 22.3, y: 6.7}
   m_EdgeRadius: 0
 --- !u!114 &797258390
 MonoBehaviour:
@@ -3414,6 +3438,8 @@ MonoBehaviour:
   minTime: 0
   maxTime: 2
   flip: 0
+  jump: 0
+  animator: {fileID: 0}
   lowgrav: 0.1
   normgrav: 0.5
 --- !u!1 &871368938
@@ -3905,7 +3931,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.25}
+  m_Offset: {x: 0.071733475, y: -4.712207}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3916,7 +3942,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 20.338184, y: 6.7789}
   m_EdgeRadius: 0
 --- !u!1 &897110653
 GameObject:
@@ -4551,6 +4577,7 @@ GameObject:
   - component: {fileID: 1113481177}
   - component: {fileID: 1113481176}
   - component: {fileID: 1113481180}
+  - component: {fileID: 1113481181}
   m_Layer: 0
   m_Name: Frog 3
   m_TagString: Enemy
@@ -4667,6 +4694,8 @@ MonoBehaviour:
   minTime: 0
   maxTime: 4
   flip: 0
+  jump: 0
+  animator: {fileID: 1113481181}
 --- !u!212 &1113481179
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4764,6 +4793,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.417324, y: 7.09}
   m_EdgeRadius: 0
+--- !u!95 &1113481181
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113481174}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b7f287dc6605410f931b1bc73919bf4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1144614210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5074,6 +5124,7 @@ GameObject:
   - component: {fileID: 1213850690}
   - component: {fileID: 1213850689}
   - component: {fileID: 1213850693}
+  - component: {fileID: 1213850694}
   m_Layer: 0
   m_Name: Frog 2
   m_TagString: Enemy
@@ -5190,6 +5241,8 @@ MonoBehaviour:
   minTime: 0
   maxTime: 4
   flip: 0
+  jump: 0
+  animator: {fileID: 1213850694}
 --- !u!212 &1213850692
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5287,6 +5340,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.58, y: 7.3}
   m_EdgeRadius: 0
+--- !u!95 &1213850694
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213850687}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 48877f01d17a64fb99fa92855d7850aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1232057729
 GameObject:
   m_ObjectHideFlags: 0
@@ -6666,6 +6740,7 @@ GameObject:
   - component: {fileID: 1500615561}
   - component: {fileID: 1500615560}
   - component: {fileID: 1500615559}
+  - component: {fileID: 1500615564}
   m_Layer: 0
   m_Name: Frog 4
   m_TagString: Enemy
@@ -6827,6 +6902,8 @@ MonoBehaviour:
   minTime: 0
   maxTime: 4
   flip: 0
+  jump: 0
+  animator: {fileID: 1500615564}
 --- !u!212 &1500615563
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6879,6 +6956,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1500615564
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500615557}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 17414032cba554b5da51782dd01cca1d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1503226491
 GameObject:
   m_ObjectHideFlags: 0
@@ -7906,7 +8004,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.25}
+  m_Offset: {x: 0, y: 3.2946424}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7917,7 +8015,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 12.2, y: 9.6790695}
   m_EdgeRadius: 0
 --- !u!1 &1661808502
 GameObject:
@@ -9675,7 +9773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2137589832
 RectTransform:
   m_ObjectHideFlags: 0

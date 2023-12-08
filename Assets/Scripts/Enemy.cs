@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     public float maxTime;
 
     public float flip;
+    public bool jump;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,8 @@ public class Enemy : MonoBehaviour
         //Decides how often the enemy wants to turn around
         if (Time.time > newTime)
         {
+            jump = true;
+            animator.SetBool("jump", true);
             rb.velocity = new Vector2(movement * speed, upForce);
             newTime = Time.time + Random.Range(minTime, maxTime);
             if (movement == right)
@@ -58,6 +62,12 @@ public class Enemy : MonoBehaviour
                 transform.localScale = new Vector3((-1) * flip, transform.localScale.y, transform.localScale.z);
             }
         }
+
+        else
+        {
+            jump = false;
+        }
+
 
      
         
