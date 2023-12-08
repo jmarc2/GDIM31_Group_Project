@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,41 +17,32 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float decel = 2;
     [SerializeField] public float jumpstr = 10;
     [SerializeField] private Text scoreDisplay;
+    [SerializeField] TextMeshProUGUI highScoreText;
 
     private int score;
-    protected int highscore;
     public float flip;
-  
+
+    void CheckHighScore()
+    {
+        if (score > PlayerPrefs.GetInt("High Score", 0))
+        {
+            PlayerPrefs.SetInt("High Score", score);
+            UpdateHighScoreText();
+        }
+    }
+
+    void UpdateHighScoreText()
+    {
+        highScoreText.text = $"High Score: {PlayerPrefs.GetInt("High Score", 0)}";
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         score = 0;
-        scoreDisplay.text = "Score: " + score;
         flip = transform.localScale.x;
-    }
-
-
-    void Update()
-    {
-        if (PlayerPrefs.HasKey("High Score"))
-{
-            if (score > PlayerPrefs.GetInt("High Score"))
-            {
-                highscore = score;
-                PlayerPrefs.SetInt("hiScore", highscore);
-                PlayerPrefs.Save();
-            }
-        }
-        else
-        {
-            if (score > highscore)
-            {
-                highscore = score;
-                PlayerPrefs.SetInt("High Score", highscore);
-                PlayerPrefs.Save();
-            }
-        }
+        UpdateHighScoreText();
     }
 
     void FixedUpdate()
@@ -110,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
             GameStateManager.GameOver();
-            scoreDisplay.text = "Score" + highscore;
+            scoreDisplay.text = "Score: " + score;
         }
 
         if (collision.gameObject.CompareTag("Kill Floor"))
@@ -125,7 +117,9 @@ public class PlayerMovement : MonoBehaviour
         {
             score += 10;
             scoreDisplay.text = "Score: " + score;
-            
+            CheckHighScore();
         }
+
+        
     }
 }
