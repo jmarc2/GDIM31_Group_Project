@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         // Cooldown for jump
         if (OnFloor)
         {
-            if (JetpackFuel < 50)
+            if(JetpackFuel < 50)
                 JetpackFuel++;
         }
         OnFloor = false;
