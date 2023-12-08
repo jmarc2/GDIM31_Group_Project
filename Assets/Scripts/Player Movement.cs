@@ -111,12 +111,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Game Over"))
         {
-            //GameStateManager.GameOver();
+            GameStateManager.GameOver();
         }
 
         if (collision.gameObject.CompareTag("Kill Floor"))
         {
-            //GameStateManager.GameOver();
+            GameStateManager.GameOver();
         }
 
         //add 10 points when player collides with enemy's top side
