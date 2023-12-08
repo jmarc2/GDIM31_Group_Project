@@ -26,7 +26,7 @@ public class End_Menu : MonoBehaviour
     public void RestartGame()
     {
         gameObject.SetActive(false);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Main Menu");
     }
 
     public static void QuitEnd()

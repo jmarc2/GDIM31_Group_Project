@@ -12,6 +12,10 @@ public class Enemy : MonoBehaviour
     protected float newTime;
     public float right;
     public float left;
+    public float minTime;
+    public float maxTime;
+
+    public float flip;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,7 @@ public class Enemy : MonoBehaviour
             float[] spawny = { 4, 4, 1, 1, 2};
             int spawn = Random.Range(0, 4);
             rb.position = new Vector2(spawnx[spawn], spawny[spawn]);
+            flip = transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -43,8 +48,18 @@ public class Enemy : MonoBehaviour
         if (Time.time > newTime)
         {
             rb.velocity = new Vector2(movement * speed, upForce);
-            newTime = Time.time + Random.Range(0, 4);
+            newTime = Time.time + Random.Range(minTime, maxTime);
+            if (movement == right)
+            {
+                transform.localScale = new Vector3(flip, transform.localScale.y, transform.localScale.z);
+            }
+            if (movement == left)
+            {
+                transform.localScale = new Vector3((-1) * flip, transform.localScale.y, transform.localScale.z);
+            }
         }
+
+     
         
 
         //Allows the enemy to go outside the view of the camera to show up on the other side of the map.
