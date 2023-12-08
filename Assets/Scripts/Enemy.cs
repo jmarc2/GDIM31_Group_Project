@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     protected float newTime;
     public float right;
     public float left;
+    public float minTime;
+    public float maxTime;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,7 @@ public class Enemy : MonoBehaviour
         if (Time.time > newTime)
         {
             rb.velocity = new Vector2(movement * speed, upForce);
-            newTime = Time.time + Random.Range(0, 4);
+            newTime = Time.time + Random.Range(minTime, maxTime);
         }
         
 
