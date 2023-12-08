@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -21,11 +22,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((enemyObjs[0] != null &&
-            enemyObjs[1] != null &&
-            enemyObjs[2] != null &&
-            enemyObjs[3] != null &&
-            enemyObjs[4]))
+        if (enemyObjs.Count == 0)
         {
             if (Time.time > nextSpawn)
             {
@@ -33,6 +30,9 @@ public class EnemySpawner : MonoBehaviour
                 nextSpawn = Time.time + Random.Range(minSpawn, maxSpawn);
             }
         }
+
+        else { }
+            
 
     }
 }

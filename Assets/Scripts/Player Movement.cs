@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Text scoreDisplay;
 
     private int score;
+    protected int highscore;
     public float flip;
   
     // Start is called before the first frame update
@@ -29,6 +30,28 @@ public class PlayerMovement : MonoBehaviour
         flip = transform.localScale.x;
     }
 
+
+    void Update()
+    {
+        if (PlayerPrefs.HasKey("High Score"))
+{
+            if (score > PlayerPrefs.GetInt("High Score"))
+            {
+                highscore = score;
+                PlayerPrefs.SetInt("hiScore", highscore);
+                PlayerPrefs.Save();
+            }
+        }
+        else
+        {
+            if (score > highscore)
+            {
+                highscore = score;
+                PlayerPrefs.SetInt("High Score", highscore);
+                PlayerPrefs.Save();
+            }
+        }
+    }
 
     void FixedUpdate()
     {
@@ -87,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
             GameStateManager.GameOver();
-            scoreDisplay.text = "";
+            scoreDisplay.text = "Score" + highscore;
         }
 
         if (collision.gameObject.CompareTag("Kill Floor"))
@@ -96,11 +119,13 @@ public class PlayerMovement : MonoBehaviour
             GameStateManager.GameOver();
         }
 
+
         //add 10 points when player collides with enemy's top side
         if (collision.gameObject.CompareTag("Point score"))
         {
             score += 10;
             scoreDisplay.text = "Score: " + score;
+            
         }
     }
 }
