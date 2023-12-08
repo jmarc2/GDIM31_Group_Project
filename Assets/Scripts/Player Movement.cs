@@ -145,6 +145,14 @@ public class PlayerMovement : MonoBehaviour
             scoreDisplay.text = "Score: " + score;
             CheckHighScore();
         }
+
+        //add 10 points when player collides with enemy's top side
+        if (collision.gameObject.CompareTag("UFO Point"))
+        {
+            score += 20;
+            scoreDisplay.text = "Score: " + score;
+            CheckHighScore();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
