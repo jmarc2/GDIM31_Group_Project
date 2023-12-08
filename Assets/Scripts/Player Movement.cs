@@ -5,6 +5,8 @@ using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private BoxCollider2D bc;
+    [SerializeField] private SpriteRenderer sr;
     [SerializeField] private float xspd;
     [SerializeField] private float yspd;
     [SerializeField] private float mxspd = 8;
@@ -13,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpstr = 10;
     [SerializeField] private Text scoreDisplay;
     [SerializeField] TextMeshProUGUI highScoreText;
+    [SerializeField] private AudioSource lose;
 
     private int score;
     private float flip;
@@ -43,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        bc = GetComponent<BoxCollider2D>();
+        sr = GetComponent<SpriteRenderer>();
         score = 0;
         scoreDisplay.text = "Score: " + score;
         flip = transform.localScale.x;
@@ -111,11 +116,25 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Game Over"))
         {
+            Destroy(rb);
+            rb = null;
+            Destroy(bc);
+            bc = null;
+            Destroy(sr);
+            sr = null;
+            lose.Play();
             GameStateManager.GameOver();
         }
 
         if (collision.gameObject.CompareTag("Kill Floor"))
         {
+            Destroy(rb);
+            rb = null;
+            Destroy(bc);
+            bc = null;
+            Destroy(sr);
+            sr = null;
+            lose.Play();
             GameStateManager.GameOver();
         }
 
