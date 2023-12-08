@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
             enemyObjs[1] != null &&
             enemyObjs[2] != null &&
             enemyObjs[3] != null &&
-            enemyObjs[4] != null))
+            enemyObjs[4]))
         {
             if (Time.time > nextSpawn)
             {
@@ -34,13 +34,5 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        if ((enemyObjs[0] == null &&
-             enemyObjs[1] == null &&
-             enemyObjs[2] == null &&
-             enemyObjs[3] == null &&
-             enemyObjs[4] == null))
-        {
-            GameStateManager.GameOver();
-        }
     }
 }
