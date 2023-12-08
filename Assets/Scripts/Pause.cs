@@ -20,6 +20,11 @@ public class Pause : MonoBehaviour
         {
             PauseGame();
         }
+
+        if (isPaused) 
+        {
+            PauseGame();
+        }
     }
 
     public void PauseGame() 
