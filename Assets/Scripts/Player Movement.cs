@@ -1,14 +1,10 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private Rigidbody2D rb;
-    
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] public float xspd;
     [SerializeField] public float yspd;
     [SerializeField] public float mxspd = 8;
@@ -16,10 +12,33 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float decel = 2;
     [SerializeField] public float jumpstr = 10;
     [SerializeField] private Text scoreDisplay;
+    [SerializeField] TextMeshProUGUI highScoreText;
 
     private int score;
     public float flip;
-  
+
+    private bool isJumping = false;
+    private float jumpTimer = 0f;
+    public float maxJumpTime = 0.3f;
+
+    private bool isJumpCooldown = false;
+    private float jumpCooldownTimer = 0f;
+    public float jumpCooldownDuration = 2.0f;
+
+    void CheckHighScore()
+    {
+        if (score > PlayerPrefs.GetInt("High Score", 0))
+        {
+            PlayerPrefs.SetInt("High Score", score);
+            UpdateHighScoreText();
+        }
+    }
+
+    void UpdateHighScoreText()
+    {
+        highScoreText.text = $"High Score: {PlayerPrefs.GetInt("High Score", 0)}";
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +46,13 @@ public class PlayerMovement : MonoBehaviour
         score = 0;
         scoreDisplay.text = "Score: " + score;
         flip = transform.localScale.x;
+        UpdateHighScoreText();
     }
-
 
     void FixedUpdate()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
 
         // Player movement left and right
         if (horizontalInput > 0)
@@ -43,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         else if (horizontalInput < 0)
         {
             rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - accel, -mxspd, mxspd), rb.velocity.y);
-            transform.localScale = new Vector3((-1)*flip, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3((-1) * flip, transform.localScale.y, transform.localScale.z);
         }
         else
         {
@@ -59,14 +79,39 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Jumping
-        float verticalInput = Input.GetAxisRaw("Vertical");
-        if (verticalInput > 0)
+        if (verticalInput > 0 && !isJumpCooldown)
         {
-            rb.AddForce(Vector2.up * (yspd + jumpstr), ForceMode2D.Impulse);
-        }
-        
+            if (!isJumping)
+            {
+                isJumping = true;
+                jumpTimer = 0f;
+            }
 
-        // The rest of your code...
+            // Check if jump duration is within the allowed limit
+            if (jumpTimer < maxJumpTime)
+            {
+                rb.AddForce(Vector2.up * (yspd + jumpstr), ForceMode2D.Impulse);
+                jumpTimer += Time.fixedDeltaTime;
+            }
+        }
+        else
+        {
+            isJumping = false;
+            jumpTimer = 0f;
+        }
+
+        // Cooldown for jump
+        if (isJumpCooldown)
+        {
+            jumpCooldownTimer += Time.fixedDeltaTime;
+
+            if (jumpCooldownTimer >= jumpCooldownDuration)
+            {
+                isJumpCooldown = false;
+                jumpCooldownTimer = 0f;
+            }
+        }
+
 
         // Screen edge teleport
         if (transform.position.x < -17.4f)
@@ -79,20 +124,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     //deletes the player object if contact between the player and bottom side of an enemy is met
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Game Over"))
         {
-            Destroy(gameObject);
             GameStateManager.GameOver();
-            scoreDisplay.text = "";
         }
 
         if (collision.gameObject.CompareTag("Kill Floor"))
         {
-            Destroy(gameObject);
             GameStateManager.GameOver();
         }
 
@@ -101,6 +142,19 @@ public class PlayerMovement : MonoBehaviour
         {
             score += 10;
             scoreDisplay.text = "Score: " + score;
+            CheckHighScore();
         }
+
+        // Start jump cooldown when colliding with specific objects
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            StartJumpCooldown();
+        }
+    }
+
+    // Start jump cooldown
+    private void StartJumpCooldown()
+    {
+        isJumpCooldown = true;
     }
 }
