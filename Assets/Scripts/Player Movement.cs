@@ -1,6 +1,3 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float mxspd = 8;
     [SerializeField] public float accel = 5;
     [SerializeField] public float decel = 2;
-    [SerializeField] public float jumpstr = 10;
+    [SerializeField] public float jumpstr = 8;
     [SerializeField] private Text scoreDisplay;
 
     private int score;
@@ -62,9 +59,11 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         if (verticalInput > 0)
         {
-            rb.AddForce(Vector2.up * (yspd + jumpstr), ForceMode2D.Impulse);
+            float jumpForce = Mathf.Clamp(yspd + jumpstr, 0, 5); // Use mxspd for clamping
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        
+
+
 
         // The rest of your code...
 
@@ -86,14 +85,11 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Game Over"))
         {
             Destroy(gameObject);
-            GameStateManager.GameOver();
-            scoreDisplay.text = "";
         }
 
         if (collision.gameObject.CompareTag("Kill Floor"))
         {
             Destroy(gameObject);
-            GameStateManager.GameOver();
         }
 
         //add 10 points when player collides with enemy's top side
