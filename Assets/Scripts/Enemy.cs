@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float movement;
+    protected float movement;
     public float speed;
     public float upForce;
     protected Rigidbody2D rb;
     protected float newTime;
     public float right;
     public float left;
+    [SerializeField]
+    private AudioSource jump;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,7 @@ public class Enemy : MonoBehaviour
         {
             rb.velocity = new Vector2(movement * speed, upForce);
             newTime = Time.time + Random.Range(0, 4);
+            jump.Play();
         }
         
 

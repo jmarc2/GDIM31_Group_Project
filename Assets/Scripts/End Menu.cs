@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class End_Menu : MonoBehaviour
 {
+
+    [SerializeField] private AudioSource die;
+
     // Start is called before the first frame update
     public void Awake()
     {
@@ -20,6 +23,7 @@ public class End_Menu : MonoBehaviour
 
     public void OpenEnd()
     {
+        die.Play();
         gameObject.SetActive(true);
     }
 
